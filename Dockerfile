@@ -1,7 +1,7 @@
 FROM python:3.11.8
 
 RUN apt update -y \
- && apt install -y git tree \
+ && apt install -y tree \
  && pip install dvc
 
 RUN git config --global user.name me \
