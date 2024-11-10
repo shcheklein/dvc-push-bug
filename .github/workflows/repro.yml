@@ -1,0 +1,16 @@
+name: 'dvc#10617 repro'
+on:
+  workflow_dispatch:
+jobs:
+  repro:
+    name: 'dvc#10617 repro'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: pip install dvc
+      - run: |
+          git config --global user.name me
+          git config --global user.email me@me.com
+      - run: ./dvc-test.sh
