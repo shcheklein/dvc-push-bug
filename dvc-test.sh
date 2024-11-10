@@ -73,6 +73,8 @@ git --no-pager show branch:1.txt.dvc
 missing_path="$remote/files/md5/5c/9597f3c8245907ea71a89d9d39d08e"
 if [ -e "$missing_path" ]; then
     echo "✅ found $missing_path"
+    exit 0
 else
     echo "❌ missing $missing_path"
+    exit 1
 fi
