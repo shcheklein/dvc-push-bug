@@ -1,8 +1,7 @@
 # [dvc#10617] repro
 
 ```bash
-git clone https://gist.github.com/0d38304ec7c82e19e86ebb25a3b83fa2 dvc-push-bug
-cd dvc-push-bug
+git clone https://github.com/ryan-williams/dvc-push-bug && cd dvc-push-bug
 docker build -t dvc-push-bug .
 docker run --rm dvc-push-bug
 ```
