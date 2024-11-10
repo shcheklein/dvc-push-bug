@@ -10,7 +10,8 @@ git init
 # Init DVC with default remote "remote" pointing at local dir `remote/`
 dvc init
 dvc config core.autostage true
-dvc remote add remote "$PWD/remote"
+remote="${remote:-/tmp/remote}"
+dvc remote add remote "$remote"
 dvc remote default remote
 git commit -m 'dvc init'
 
@@ -42,7 +43,7 @@ dvc push -A
 # 1 file pushed
 
 # ❌ Confirming: current version of 1.txt was pushed to remote, but previous version was not:
-tree remote/files/md5
+tree "$remote/files/md5"
 # remote/files/md5
 # └── 88
 #     └── 80cd8c1fb402585779766f681b868b
@@ -68,3 +69,10 @@ git --no-pager show branch:1.txt.dvc
 #   size: 4
 #   hash: md5
 #   path: 1.txt
+
+missing_path="$remote/files/md5/5c/9597f3c8245907ea71a89d9d39d08e"
+if [ -e "$missing_path" ]; then
+    echo "✅ found $missing_path"
+else
+    echo "❌ missing $missing_path"
+fi
