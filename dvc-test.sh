@@ -13,7 +13,7 @@ dvc config core.autostage true
 remote="${remote:-/tmp/remote}"
 dvc remote add remote "$remote"
 dvc remote default remote
-git commit -m 'dvc init'
+git commit -am 'dvc init'
 
 # Add+Commit a DVC file, leave branch `branch` pointing at this Git commit
 echo aaa > 1.txt
